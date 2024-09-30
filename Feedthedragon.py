@@ -93,6 +93,7 @@ rect location: center = (WINDOW_WIDTH//2, WINDOW_HEIGHT//2)
 game_over_text = font.render("GAMEOVER ", True, GREEN, DARKGREEN)
 game_over_rect = game_over_text.get_rect()
 game_over_rect.center = (WINDOW_WIDTH//2, WINDOW_HEIGHT//2)
+
 # Set Text for Continue (Similar to Score)
 '''
 variable names:  continue_text, continue_rect  
@@ -103,6 +104,7 @@ background: DARKGREEN
 rect location: center = (WINDOW_WIDTH//2, WINDOW_HEIGHT//2 + 32)
 '''
 
+
 # Set sounds and music
 coin_sound = pygame.mixer.Sound("coin_sound.wav")
 miss_sound = pygame.mixer.Sound("miss_sound.wav")
@@ -110,23 +112,11 @@ miss_sound.set_volume(0.1)
 pygame.mixer.music.load("ftd_background_music.wav")
 
 # Set images
-'''
-variable names:  player_image, player_rect  
-image source: "dragon_right.png"
-rect location: left = 32
-rect location: centery = WINDOW_HEIGHT // 2
-'''
 player_image = pygame.image.load("dragon_right.png")
 player_rect = player_image.get_rect()
 player_rect.left = 32
 player_rect.centery = WINDOW_HEIGHT // 2
 
-'''
-variable names:  coin_image, coin_rect  
-image source: "coin.png"
-rect location: x = WINDOW_WIDTH + BUFFER_DISTANCE
-rect location: y = 0.   Note this will be a rando number.  Just later.  
-'''
 coin_image = pygame.image.load("coin.png")
 coin_rect = coin_image.get_rect()
 coin_rect.x = WINDOW_WIDTH + BUFFER_DISTANCE
@@ -175,7 +165,6 @@ while running:
     if player_lives == 0:
        display_surface.blit(game_over_text, game_over_rect)
        display_surface.blit(continue_text, continue_rect)
-       ''' Display the continue text like I did for game_over_text'''
        pygame.display.update()
 
        #Pause the game until player presses a key, then reset the game
@@ -203,8 +192,6 @@ while running:
     display_surface.blit(score_text, score_rect)
     display_surface.blit(title_text, title_rect)
     display_surface.blit(lives_text, lives_rect)
-    ''' YOU DO:  blit title_text and title_rect'''
-    ''' YOU DO:  blit lives_text and lives_rect'''
     display_surface.blit(player_image, player_rect)
     display_surface.blit(coin_image, coin_rect)
     pygame.draw.line(display_surface, WHITE, (0,64), (WINDOW_WIDTH, 64), 2)
